@@ -43,13 +43,13 @@ npm i
 4. Сбилдите проект
 
 ```
-docker compose build
+docker-compose build
 ```
 
 5. Запуститите проект 
 
 ```
-docker compose up
+docker-compose up
 ```
 
 Фронтенд:
