@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'MontserratM';
+	src: url('../../assets/fonts/Montserrat-Medium.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'MontserratR';
+	src: url('../../assets/fonts/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Montserrat500';
+	src: url('../../assets/fonts/Montserrat-Medium.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'MontserratLight';
+	src: url('../../assets/fonts/Montserrat-Light.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Montserrat600';
+	src: url('../../assets/fonts/Montserrat-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Montserrat700';
+	src: url('../../assets/fonts/Montserrat-Bold.ttf') format('truetype');
+}

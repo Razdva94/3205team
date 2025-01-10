@@ -1,0 +1,46 @@
+version: '3.9'
+
+services:
+  db:
+    container_name: pg_db_1
+    image: postgres:16
+    ports:
+      - '5438:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=shorturl_docker
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+
+  back:
+    build:
+      context: .
+      dockerfile: dockerfile_back
+    environment:
+      DATABASE_URL: 'postgresql://postgres:postgres@db:5432/shorturl_docker?schema=public'
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    command:
+      [
+        'sh',
+        '-c',
+        './wait-for-db.sh db 5432 $$POSTGRES_USER $$POSTGRES_PASSWORD npx prisma migrate deploy && npm run start:dev',
+      ]
+
+  front:
+    build:
+      context: .
+      dockerfile: dockerfile_front
+    ports:
+      - '8080:5173'
+    depends_on:
+      - back
+    command: ['sh', '-c', 'npm run dev -- --host']
+
+volumes:
+  postgres_data:
