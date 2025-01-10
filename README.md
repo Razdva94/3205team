@@ -51,3 +51,16 @@ docker compose build
 ```
 docker compose up
 ```
+
+Фронтенд:
+
+```
+http://localhost:8080/3205team
+```
+
+Бэкенд 
+
+```
+http://localhost:3000/short-url/
+```
+
