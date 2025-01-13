@@ -16,13 +16,14 @@ function MainPage() {
 	const [newLink, setNewLink] = React.useState('');
 
 	const handleSubmit = async () => {
+		console.log(import.meta.env.VITE_URL, 'url');
 		const link: INewLink = await api.postLink(
 			originLink,
 			alias,
 			Number(minutes),
 		);
-		console.log(import.meta.env.VITE_KEY);
-		setNewLink(`http://localhost:3000/short-url/${link.shortUrl}`);
+
+		setNewLink(`${import.meta.env.VITE_URL}/${link.shortUrl}`);
 	};
 
 	return (

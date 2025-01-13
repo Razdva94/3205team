@@ -36,7 +36,7 @@ class Api {
 }
 
 const api = new Api({
-	baseUrl: 'http://localhost:3000/short-url',
+	baseUrl: `${import.meta.env.VITE_URL}`,
 	headers: {
 		'Content-Type': 'application/json',
 	},
